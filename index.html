@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Naincy Pal • Meta Ads Manager & Performance Marketer</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --primary-light: #eff6ff;
+            --text-dark: #1f2937;
+            --text-light: #4b5563;
+            --bg-light: #f9fafb;
+            --white: #ffffff;
+            --border: #e5e7eb;
+            --transition: all 0.2s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+            padding-top: 76px;
+        }
+
+        a { text-decoration: none; color: inherit; transition: var(--transition); }
+        ul { list-style: none; }
+        img { max-width: 100%; height: auto; display: block; }
+
+        .container {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        section { padding: 4.5rem 0; }
+
+        /* Typography */
+        h1, h2, h3 { font-weight: 700; color: var(--text-dark); }
+        h1 { font-size: 2.75rem; line-height: 1.2; }
+        h2 { font-size: 2.1rem; margin-bottom: 1rem; }
+        h3 { font-size: 1.35rem; margin-bottom: 0.75rem; }
+        p { color: var(--text-light); margin-bottom: 1.25rem; font-size: 1.05rem; }
+
+        .section-header {
+            max-width: 680px;
+            margin-bottom: 3rem;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.8rem 1.75rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: var(--transition);
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+        }
+
+        .btn-outline {
+            background-color: var(--white);
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary-light);
+        }
+
+        /* Header / Navbar */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.45rem;
+            font-weight: 800;
+            color: var(--text-dark);
+            letter-spacing: -0.02em;
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        nav ul { display: flex; gap: 1.75rem; align-items: center; }
+        nav a { font-weight: 500; font-size: 0.98rem; color: var(--text-dark); }
+        nav a:not(.btn):hover { color: var(--primary); }
+
+        @media (max-width: 640px) {
+            nav ul li:not(:last-child) { display: none; }
+            h1 { font-size: 2.1rem; }
+        }
+
+        /* Hero Section */
+        #hero {
+            background: radial-gradient(circle at 10% 20%, #ffffff 0%, #eff6ff 100%);
+            text-align: center;
+            padding: 5.5rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: var(--primary-light);
+            color: var(--primary);
+            padding: 0.5rem 1.1rem;
+            border-radius: 2rem;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid #bfdbfe;
+        }
+
+        #hero h1 {
+            max-width: 850px;
+            margin: 0 auto 1.25rem;
+        }
+
+        #hero p {
+            max-width: 680px;
+            margin: 0 auto 2rem;
+            font-size: 1.15rem;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* About Section */
+        #about {
+            background-color: var(--white);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        @media (min-width: 860px) {
+            .about-grid {
+                grid-template-columns: 340px 1fr;
+                gap: 4rem;
+            }
+        }
+
+        .photo-card {
+            background-color: var(--bg-light);
+            padding: 0.85rem;
+            border-radius: 1rem;
+            border: 1px solid var(--border);
+            box-shadow: 0 12px 24px -8px rgba(0, 0, 0, 0.08);
+            max-width: 340px;
+            margin: 0 auto;
+        }
+
+        .photo-card img {
+            width: 100%;
+            aspect-ratio: 3 / 4;
+            object-fit: cover;
+            object-position: center top;
+            border-radius: 0.75rem;
+        }
+
+        .about-text-box {
+            background-color: var(--bg-light);
+            padding: 2.25rem;
+            border-radius: 1rem;
+            border: 1px solid var(--border);
+        }
+
+        .about-text-box p {
+            font-size: 1.08rem;
+            line-height: 1.75;
+            color: var(--text-dark);
+        }
+
+        .about-text-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Skills Section */
+        .grid-3 {
+            display: grid;
+            gap: 1.75rem;
+            grid-template-columns: 1fr;
+        }
+
+        @media (min-width: 768px) {
+            .grid-3 { grid-template-columns: repeat(3, 1fr); }
+        }
+
+        .skill-card {
+            background-color: var(--white);
+            padding: 2rem;
+            border-radius: 1rem;
+            border: 1px solid var(--border);
+            transition: var(--transition);
+        }
+
+        .skill-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 25px -5px rgba(0, 0, 0, 0.07);
+        }
+
+        .skill-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 3.25rem;
+            height: 3.25rem;
+            border-radius: 0.75rem;
+            background-color: var(--primary-light);
+            color: var(--primary);
+            margin-bottom: 1.25rem;
+        }
+
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1.25rem;
+        }
+
+        .skill-tag {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            padding: 0.35rem 0.75rem;
+            border-radius: 2rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            border: 1px solid var(--border);
+        }
+
+        /* Process Section */
+        #process {
+            background-color: var(--white);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .process-list {
+            max-width: 850px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .process-step {
+            display: flex;
+            gap: 1.75rem;
+            align-items: flex-start;
+            background-color: var(--bg-light);
+            padding: 2rem;
+            border-radius: 1rem;
+            border: 1px solid var(--border);
+        }
+
+        .step-num {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            line-height: 1;
+            min-width: 3rem;
+        }
+
+        .process-step p {
+            margin-bottom: 0;
+        }
+
+        /* Connect Section */
+        #connect {
+            text-align: center;
+        }
+
+        .connect-card {
+            max-width: 650px;
+            margin: 0 auto;
+            background-color: var(--white);
+            padding: 2.75rem 2rem;
+            border-radius: 1rem;
+            border: 1px solid var(--border);
+            box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.05);
+        }
+
+        .location-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            color: var(--text-light);
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .email-display {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 1.75rem;
+            word-break: break-all;
+        }
+
+        .copy-status {
+            margin-top: 0.85rem;
+            font-size: 0.9rem;
+            color: #059669;
+            font-weight: 600;
+            min-height: 1.4rem;
+        }
+
+        .quick-form {
+            margin-top: 2.25rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+            text-align: left;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.4rem;
+            font-size: 0.95rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid var(--border);
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            background-color: var(--bg-light);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            background-color: var(--white);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--white);
+            border-top: 1px solid var(--border);
+            padding: 2rem 0;
+            text-align: center;
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <header>
+        <div class="container">
+            <a href="#" class="logo">Naincy <span>Pal</span></a>
+            <nav>
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#process">Process</a></li>
+                    <li><a href="#connect" class="btn btn-primary" style="padding: 0.55rem 1.25rem;">Connect</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="container">
+            <div class="hero-badge">
+                Meta Ads Manager • Freelance & Full-Time
+            </div>
+            <h1>Hi, I'm Naincy Pal.<br>Performance-Driven Meta Ads Manager.</h1>
+            <p>I help businesses generate qualified leads and consistent sales through structured Facebook & Instagram ad campaigns, daily monitoring, and transparent performance reporting.</p>
+            <div class="btn-group">
+                <a href="mailto:naincypal38@gmail.com?subject=Meta%20Ads%20Inquiry" class="btn btn-primary">Email Me Directly</a>
+                <a href="#process" class="btn btn-outline">See How It Works</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <div class="section-header">
+                <h2>About Me</h2>
+                <p>Hands-on Meta Ads specialist focused on structured campaign execution and measurable ROI.</p>
+            </div>
+
+            <div class="about-grid">
+                <div class="photo-card">
+                    <!-- Make sure your photo file is saved as naincy.jpg in the same folder -->
+                    <img src="naincy.jpg" alt="Naincy Pal - Meta Ads Manager">
+                </div>
+
+                <div class="about-text-box">
+                    <p>I am <strong>Naincy Pal</strong>, a dedicated Meta Ads Manager based in <strong>Kanpur, Uttar Pradesh</strong>, with practical agency experience working at <strong>Leadswallah</strong>. Over my career, I have planned, launched, and scaled all major types of Facebook and Instagram ad campaigns—including Lead Generation, Sales & Conversions, Website Traffic, Brand Awareness, Engagement, and Retargeting funnels.</p>
+                    <p>I manage the entire advertising lifecycle end-to-end. From onboarding a new client and taking secure Business Manager, Ad Account, Page, and Pixel access without ever asking for personal passwords, to structuring audiences, monitoring daily ad spend, optimizing cost-per-lead, and sharing clear performance reports, I ensure every campaign is built for steady, predictable growth.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Skills Section -->
+    <section id="skills">
+        <div class="container">
+            <div class="section-header">
+                <h2>Core Skills & Expertise</h2>
+                <p>Everything required to launch, scale, and optimize profitable Meta ad accounts.</p>
+            </div>
+
+            <div class="grid-3">
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                    </div>
+                    <h3>Campaign Setup</h3>
+                    <p>End-to-end campaign architecture tailored to business goals—covering cold prospecting, warm engagement, and retargeting funnels.</p>
+                    <div class="skill-list">
+                        <span class="skill-tag">Lead Generation Ads</span>
+                        <span class="skill-tag">Sales & Conversions</span>
+                        <span class="skill-tag">Pixel & Event Setup</span>
+                        <span class="skill-tag">Audience Targeting</span>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M18 9l-5 5-4-4-3 3"/></svg>
+                    </div>
+                    <h3>Optimization Strategy</h3>
+                    <p>Continuous monitoring of CTR, CPC, CPM, and CPL to pause underperforming ads early and scale winning ad sets safely.</p>
+                    <div class="skill-list">
+                        <span class="skill-tag">A/B Creative Testing</span>
+                        <span class="skill-tag">CPL & CPA Reduction</span>
+                        <span class="skill-tag">Budget Scaling</span>
+                        <span class="skill-tag">Retargeting Funnels</span>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                    </div>
+                    <h3>Monitoring & Reporting</h3>
